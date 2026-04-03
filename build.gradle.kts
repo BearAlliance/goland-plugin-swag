@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.github.bearalliance"
-version = "1.0.0"
+version = System.getenv("RELEASE_VERSION") ?: "1.0.0"
 
 repositories {
     mavenCentral()
@@ -28,5 +28,9 @@ tasks {
 
     buildSearchableOptions {
         enabled = false
+    }
+
+    publishPlugin {
+        token.set(System.getenv("PUBLISH_TOKEN"))
     }
 }
