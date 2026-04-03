@@ -1,0 +1,21 @@
+<idea-plugin>
+    <id>com.github.bearalliance.goland-plugin-swag</id>
+    <name>Swag Comment Highlighter</name>
+    <vendor>bearalliance</vendor>
+
+    <description><![CDATA[
+    Syntax highlighting for <a href="https://github.com/swaggo/swag">swag</a> annotations in Go comments.
+    <br/><br/>
+    Highlights <code>@Annotation</code> tags in Go comment lines (e.g. <code>// @Summary</code>,
+    <code>// @Router</code>, <code>// @Param</code>) so they stand out visually from regular comments.
+    <br/><br/>
+    Colors are customizable under <b>Settings &gt; Editor &gt; Color Scheme &gt; Swag</b>.
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <annotator language="" implementationClass="com.github.bearalliance.swag.SwagAnnotator"/>
+        <colorSettingsPage implementation="com.github.bearalliance.swag.SwagColorSettingsPage"/>
+    </extensions>
+</idea-plugin>
