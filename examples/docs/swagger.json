@@ -1,0 +1,101 @@
+{
+    "components": {
+        "schemas": {
+            "main.GreetingResponse": {
+                "properties": {
+                    "message": {
+                        "example": "Hello, Alice!",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "info": {
+        "description": "Returns a greeting message for the given name",
+        "title": "Example API",
+        "version": "1.0"
+    },
+    "externalDocs": {
+        "description": "",
+        "url": ""
+    },
+    "paths": {
+        "/greeting/{name}": {
+            "get": {
+                "description": "Returns a greeting message for the given name",
+                "parameters": [
+                    {
+                        "description": "Name of the person to greet",
+                        "in": "path",
+                        "name": "name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/main.GreetingResponse"
+                                }
+                            }
+                        },
+                        "description": "OK"
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "additionalProperties": {
+                                        "type": "string"
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        },
+                        "description": "Bad Request"
+                    }
+                },
+                "summary": "Greet a user",
+                "tags": [
+                    "greetings"
+                ]
+            }
+        },
+        "/health": {
+            "get": {
+                "description": "Returns OK if the service is running",
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "additionalProperties": {
+                                        "type": "string"
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        },
+                        "description": "OK"
+                    }
+                },
+                "summary": "Health check",
+                "tags": [
+                    "system"
+                ]
+            }
+        }
+    },
+    "openapi": "3.1.0",
+    "servers": [
+        {
+            "url": "localhost:8080/api/v1"
+        }
+    ]
+}
