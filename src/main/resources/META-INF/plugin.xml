@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>com.github.bearalliance.goland-plugin-swag</id>
-    <name>Swag Comment Highlighter</name>
+    <name>Swag</name>
     <vendor>bearalliance</vendor>
 
     <description><![CDATA[
@@ -13,6 +13,7 @@
     ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.plugins.go</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <annotator language="" implementationClass="com.github.bearalliance.swag.SwagAnnotator"/>
