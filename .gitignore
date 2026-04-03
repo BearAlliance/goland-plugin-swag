@@ -1,2 +1,8 @@
 build/
 .gradle/
+
+examples/examples
+examples/main
+examples/goland-plugin-swag
+
+.DS_Store
