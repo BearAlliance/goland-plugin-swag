@@ -23,9 +23,8 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-      - name: Build plugin
-        run: ./gradlew build
       - name: Run semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx -p semantic-release@25 semantic-release
+          PUBLISH_TOKEN: ${{ secrets.JETBRAINS_MARKETPLACE_TOKEN }}
+        run: npx -p semantic-release@25 -p @semantic-release/exec semantic-release
