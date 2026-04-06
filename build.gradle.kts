@@ -1,3 +1,12 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.commonmark:commonmark:0.24.0")
+    }
+}
+
 plugins {
     id("java")
     id("org.jetbrains.kotlin.jvm") version "1.9.25"
@@ -24,7 +33,10 @@ kotlin {
 tasks {
     patchPluginXml {
         sinceBuild.set("241")
-        changeNotes.set(System.getenv("RELEASE_NOTES") ?: "")
+        val markdownNotes = System.getenv("RELEASE_NOTES") ?: ""
+        val parser = org.commonmark.parser.Parser.builder().build()
+        val renderer = org.commonmark.renderer.html.HtmlRenderer.builder().build()
+        changeNotes.set(renderer.render(parser.parse(markdownNotes)))
     }
 
     buildSearchableOptions {
