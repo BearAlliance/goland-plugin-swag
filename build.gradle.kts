@@ -24,6 +24,7 @@ kotlin {
 tasks {
     patchPluginXml {
         sinceBuild.set("241")
+        changeNotes.set(System.getenv("RELEASE_NOTES") ?: "")
     }
 
     buildSearchableOptions {
