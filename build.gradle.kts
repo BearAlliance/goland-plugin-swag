@@ -21,8 +21,8 @@ repositories {
 }
 
 intellij {
-    version.set("2024.1.7")
-    type.set("IC")
+    version.set("2024.1")
+    type.set("GO")
     updateSinceUntilBuild.set(false)
 }
 
